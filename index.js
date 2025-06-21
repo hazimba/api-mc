@@ -1,7 +1,7 @@
 import dotenv from "dotenv";
 import express from "express";
 import mongoose from "mongoose";
-import router from "./routes/patient.js";
+import router from "./routes/routes.js";
 import cors from "cors";
 
 const app = express();

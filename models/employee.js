@@ -1,6 +1,11 @@
 import mongoose from "mongoose";
+import { v4 as uuidv4 } from "uuid";
 
 const employeeSchema = new mongoose.Schema({
+  _id: {
+    type: String,
+    default: uuidv4,
+  },
   name: {
     type: String,
     required: true,
@@ -21,6 +26,14 @@ const employeeSchema = new mongoose.Schema({
   phone: {
     type: String,
     required: true,
+  },
+  address: {
+    type: String,
+    required: true,
+  },
+  dateOfJoining: {
+    type: Date,
+    default: Date.now,
   },
 });
 
