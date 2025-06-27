@@ -13,6 +13,22 @@ export const getEmployees = async (req, res) => {
   }
 };
 
+export const deleteEmployee = async (req, res) => {
+  const { id } = req.params;
+  if (!id) {
+    return res.status(400).json({ message: "Employee ID is required." });
+  }
+  try {
+    const deletedEmployee = await Employee.findByIdAndDelete(id);
+    if (!deletedEmployee) {
+      return res.status(404).json({ message: "Employee not found." });
+    }
+    res.status(200).json({ message: "Employee deleted successfully" });
+  } catch (error) {
+    res.status(500).json({ message: "Error deleting employee", error });
+  }
+};
+
 export const getEmployeeById = async (req, res) => {
   const { id } = req.params;
 
